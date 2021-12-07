@@ -6,10 +6,7 @@
   "permissions": [
   ],
   "icons": {
-    "16": "icon-16-disabled.png",
-    "32": "icon-32-disabled.png",
-    "48": "icon-48-disabled.png",
-    "128": "icon-128-disabled.png"
+    "128": "icon-128.png"
   },
   "content_scripts": [
     {
