@@ -1,0 +1,34 @@
+{
+  "name": "mutesync",
+  "description": "Extends mutesync desktop app to web clients.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+  ],
+  "icons": {
+    "16": "icon-16-disabled.png",
+    "32": "icon-32-disabled.png",
+    "48": "icon-48-disabled.png",
+    "128": "icon-128-disabled.png"
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "content_script.js"
+      ],
+      "matches": [
+        "https://meet.google.com/*"
+      ],
+      "exclude_matches": [
+        "https://meet.google.com/getalink"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "mütesync",
+    "default_icon": "icon-128.png",
+    "default_popup": "popups/default.html"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy5Hjn5BDYtngVzsXekpvAPQW7SFpKIM2z/xV4py5XTfOAT5Ln/rEnYfwGNrw6WEZAPo2OsFnSg1ZOpCe7E5NmQVyqbKul9sDwu7wtQ288W8nu2/OoeDfTrfUPSKswTPpA8DbFBLAyYsqLABvg8hpfWRBlKywGSNOAfciJCH13tyUDCMeDWrAbrpdjZDOjTXu7AXLEc5qrAPyLlDisK50THyyCU6BbLttJmIFo3Ymen8UrKkpKsp0ewr5AEDEm4HGgM6/rnAc2Ivpdnt3H3jKv/Ttge9/AkBFvPG0eEgilzkLfydgs1TZp/n4W5Az87LqNH9gN6tJz4z6h+ez3hbmiwIDAQAB"
+}
