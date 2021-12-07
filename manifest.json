@@ -1,5 +1,5 @@
 {
-  "name": "mutesync",
+  "name": "mutesync-browser-extension",
   "description": "Extends mutesync desktop app to web clients.",
   "version": "1.0",
   "manifest_version": 3,
