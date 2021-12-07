@@ -7,7 +7,7 @@
 //# sourceMappingURL=socket.io.min.js.map
 
 function getMuteStatus() {
-    var button = document.querySelector("[data-is-muted] div");
+    var button = document.querySelector("[data-is-muted] button");
     var value = button ? button.getAttribute('data-is-muted') : null;
     if ("true" === value) {
         return "chromeMute:muted";
