@@ -1,0 +1,44 @@
+{
+  "name": "mutesync",
+  "description":"Extends mutesync desktop app to web clients.",
+  "permissions": [
+    "https://discord.com/*", "https://meet.google.com/*",
+    "https://teams.microsoft.com/*", "https://teams.live.com/*",
+    "https://app.slack.com/*", "https://whereby.com/*"
+  ],
+  "options_page": "options.html",
+  "background": {
+    "page": "background.html",
+    "persistent":true
+  },
+  "externally_connectable":{"ids":["*"]},
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16":"icon-16.png",
+      "32":"icon-32.png",
+      "48":"icon-48.png",
+      "128":"icon-128.png"
+    }
+  },
+  "icons": {
+    "16":"icon-16-disabled.png",
+    "32":"icon-32-disabled.png",
+    "48":"icon-48-disabled.png",
+    "128":"icon-128-disabled.png"
+  },
+  "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval' http://localhost:9630; connect-src * data: blob: filesystem:; style-src 'self' data: chrome-extension-resource: 'unsafe-inline'; img-src 'self' data: chrome-extension-resource:; frame-src 'self' data: chrome-extension-resource:; font-src 'self' data: chrome-extension-resource:; media-src * data: blob: filesystem:;",
+  "content_scripts": [
+    {
+      "matches": ["https://discord.com/*", "https://meet.google.com/*",
+        "https://teams.microsoft.com/*", "https://teams.live.com/*",
+        "https://app.slack.com/*", "https://whereby.com/*", "*://*.google.com/*"],
+      "js": ["contentScript.bundle.js"],
+      "css": [],
+      "exclude_matches":["https://meet.google.com/getalink"],
+      "run_at":"document_idle"
+    }
+  ],
+  "manifest_version": 2,
+  "version":"5.0.0"
+}

@@ -1,0 +1,9 @@
+import '../img/logo.png';
+import '../img/icon-16-disabled.png';
+import '../img/icon-32-disabled.png';
+import '../img/icon-48-disabled.png';
+import '../img/icon-128-disabled.png';
+import '../img/icon-16.png';
+import '../img/icon-32.png';
+import '../img/icon-48.png';
+import '../img/icon-128.png';
