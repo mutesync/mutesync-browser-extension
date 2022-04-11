@@ -4,3 +4,5 @@ secrets.*.js
 .DS_Store
 .env
 releases
+.idea/
+browser-extension.iml
