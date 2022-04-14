@@ -32,7 +32,7 @@
     {
       "matches": ["https://discord.com/*", "https://meet.google.com/*",
         "https://teams.microsoft.com/*", "https://teams.live.com/*",
-        "https://app.slack.com/*", "https://whereby.com/*", "*://*.google.com/*"],
+        "https://app.slack.com/*", "https://whereby.com/*"],
       "js": ["contentScript.bundle.js"],
       "css": [],
       "exclude_matches":["https://meet.google.com/getalink"],
