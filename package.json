@@ -1,6 +1,6 @@
 {
   "name": "mutesync-browser-extension",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "",
   "scripts": {
     "build": "node scripts/build.js",
