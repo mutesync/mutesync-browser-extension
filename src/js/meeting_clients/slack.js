@@ -4,12 +4,20 @@ import {Clients} from './clients.js';
 const button_text_map = {
     "mute":{
         "english": `[aria-label="Microphone"]`,
-        "japanese": `[aria-label="マイク"]`
+        "japanese": `[aria-label="マイク"]`,
+        "german": `[aria-label="Mikrofon"]`,
+        "chinese": `[aria-label="麦克风"]`,
+        "chinese.traditional": `[aria-label="麥克風"]`,
+        "french": `[aria-label="Micro"]`
     },
     "unmute": {},
     "videoActivate":{
         "english": `[aria-label="Camera"]`,
-        "japanese": `[aria-label="カメラ"]`
+        "japanese": `[aria-label="カメラ"]`,
+        "german": `[aria-label="Kamera"]`,
+        "chinese": `[aria-label="摄像头"]`,
+        "chinese.traditional": `[aria-label="相機"]`,
+        "french": `[aria-label="Caméra"]`
     },
     "videoDeactivate":{}
 }
@@ -45,7 +53,7 @@ export class Slack extends Clients {
             }
         });
 
-        console.log("status: ", status)
+        console.log("mutesync:", status)
         return status;
     }
 

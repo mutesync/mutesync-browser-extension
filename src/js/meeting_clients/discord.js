@@ -4,7 +4,12 @@ import {Clients} from './clients.js';
 const button_text_map = {
     "mute":{
         "english": "[aria-label=\"Mute\"]",
-        "japanese": "[aria-label='ミュート']"
+        "japanese": "[aria-label='ミュート']",
+        "german": "[aria-label='Stummschalten']",
+        "chinese": "[aria-label='静音']",
+        "chinese.taiwan": "[aria-label='靜音']",
+        "french": "[aria-label='Rendre muet']",
+        "polish": "[aria-label='Wycisz']"
     },
     "unmute": {},
     "videoActivate":{},
@@ -33,6 +38,7 @@ export class Discord extends Clients {
             }
         });
 
+        console.log("mutesync:", status)
         return status;
     }
 

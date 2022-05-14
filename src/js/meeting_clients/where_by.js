@@ -48,6 +48,8 @@ export class WhereBy extends Clients {
                 return;
             }
         });
+
+        console.log("mutesync:", status)
         return status
     }
 

@@ -4,19 +4,39 @@ import { Clients } from "./clients.js";
 const button_text_map = {
     "mute": {
         "english": `[aria-label="Mute"]`,
-        "japanese": `[aria-label="ミュート"]`
+        "japanese": `[aria-label="ミュート"]`,
+        "german": `[aria-label="Stummschalten"]`,
+        "chinese": `[aria-label="靜音"]`,
+        "chinese.taiwan": `[aria-label="靜音"]`,
+        "french": `[aria-label="Muet"]`,
+        "polish": `[aria-label="Wycisz"]`
     },
     "unmute": {
         "english": `[aria-label="Unmute"]`,
-        "japanese": `[aria-label="ミュート解除"]`
+        "japanese": `[aria-label="ミュート解除"]`,
+        "german": `[aria-label="Stummschaltung aufheben"]`,
+        "chinese": `[aria-label="取消靜音"]`,
+        "chinese.taiwan": `[aria-label="取消靜音"]`,
+        "french": `[aria-label="Activer le son"]`,
+        "polish": `[aria-label="Wyłącz wyciszenie"]`
     },
     "videoActivate": {
         "english": `[aria-label="Turn camera on"]`,
-        "japanese": `[aria-label="カメラをオンにする"]`
+        "japanese": `[aria-label="カメラをオンにする"]`,
+        "german": `[aria-label="Kamera aktivieren"]`,
+        "chinese": `[aria-label="開啟攝影機"]`,
+        "chinese.taiwan": `[aria-label="開啟攝影機"]`,
+        "french": `[aria-label="Activer la caméra"]`,
+        "polish": `[aria-label="Włącz kamerę"]`
     },
     "videoDeactivate": {
         "english": `[aria-label="Turn camera off"]`,
-        "japanese": `[aria-label="カメラをオフにする"]`
+        "japanese": `[aria-label="カメラをオフにする"]`,
+        "german": `[aria-label="Kamera deaktivieren"]`,
+        "chinese": `[aria-label="關閉攝影機"]`,
+        "chinese.taiwan": `[aria-label="關閉攝影機"]`,
+        "french": `[aria-label="Désactiver la caméra"]`,
+        "polish": `[aria-label="Wyłącz kamerę"]`
     }
 }
 
@@ -59,7 +79,7 @@ export class MicrosoftTeams extends Clients {
         this.videoActivateSelectors.forEach(selector => {
             let button = getElement(selector);
             if (button){
-            status += `chromeMute:stopped,`;
+            status += `chromeVideo:stopped,`;
             return;
             }
         });
@@ -68,12 +88,12 @@ export class MicrosoftTeams extends Clients {
         this.videoDeactivateSelectors.forEach(selector => {
             let button = getElement(selector);
             if (button){
-            status += `chromeMute:started,`;
+            status += `chromeVideo:started,`;
             return;
             }
         });
 
-        console.log(status)
+        console.log("mutesync:", status)
         return status;
     }
 

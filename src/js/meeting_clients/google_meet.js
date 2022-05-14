@@ -9,11 +9,21 @@ const button_text_map = {
     "unmute": {},
     "videoActivate":{
         "english": `[aria-label="Turn on camera (ctrl + e)"]`,
-        "japanese": `[aria-label="カメラをオンにする（⌘+E キー）"]`
+        "japanese": `[aria-label="カメラをオンにする（⌘+E キー）"]`,
+        "german": `[aria-label="Kamera deaktivieren (⌘ + e)"]`,
+        "chinese": `[aria-label="开启摄像头 (⌘ + e)"]`,
+        "chinese.traditional": `[aria-label="開啟相機 (⌘ + e)"]`,
+        "french": `[aria-label="Activer la caméra (⌘+e)"]`,
+        "polish": `[aria-label="Włącz kamerę (⌘ + E)"]`,
     },
     "videoDeactivate":{
         "english": `[aria-label="Turn off camera (ctrl + e)"]`,
-        "japanese": `[aria-label="カメラをオフにする（⌘+E キー）"]`
+        "japanese": `[aria-label="カメラをオフにする（⌘+E キー）"]`,
+        "german": `[aria-label="Kamera aktivieren (⌘ + e)"]`,
+        "chinese": `[aria-label="关闭摄像头 (⌘ + e)"]`,
+        "chinese.traditional": `[aria-label="關閉相機 (⌘ + e)"]`,
+        "french": `[aria-label="Désactiver la caméra (⌘+e)"]`,
+        "polish": `[aria-label="Wyłącz kamerę (⌘ + E)"]`,
     }
 }
 
@@ -49,6 +59,7 @@ export class GoogleMeet extends Clients {
             }
         });
 
+        console.log("mutesync:", status)
         return status
     }
 
