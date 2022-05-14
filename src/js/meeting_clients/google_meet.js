@@ -1,64 +1,88 @@
-import {getElement, muteStatus} from '../utils.js';
+import {getElement, muteStatus, videoStatus} from '../utils.js';
 import {Clients} from './clients.js';
+
+const button_text_map = {
+    "mute":{
+        "english": "[data-is-muted] div",
+        "english.1": "[data-is-muted] button"
+    },
+    "unmute": {},
+    "videoActivate":{
+        "english": `[aria-label="Turn on camera (ctrl + e)"]`,
+        "japanese": `[aria-label="カメラをオンにする（⌘+E キー）"]`
+    },
+    "videoDeactivate":{
+        "english": `[aria-label="Turn off camera (ctrl + e)"]`,
+        "japanese": `[aria-label="カメラをオフにする（⌘+E キー）"]`
+    }
+}
+
 
 export class GoogleMeet extends Clients {
     constructor() {
         super();
         this.targetUrls = ["meet.google.com"];
+        this.muteSelectors = Object.values(button_text_map.mute);
+        this.unmuteSelectors = Object.values(button_text_map.unmute);
+        this.videoActivateSelectors = Object.values(button_text_map.videoActivate);
+        this.videoDeactivateSelectors = Object.values(button_text_map.videoDeactivate);
     }
 
     getStatus() {
-        let oldMuteButton = getElement("[data-is-muted] div");
-        let newMuteButton = getElement("[data-is-muted] button");
-        let videoButton = (
-            getElement('[aria-label="Turn off camera (ctrl + e)"]') || 
-            getElement('[aria-label="Turn on camera (ctrl + e)"]')
-        );
-        let status = ''
+        let status = '';
 
-        if(muteStatus(oldMuteButton, "data-is-muted") != 'disabled'){
-            status += `chromeMute:${muteStatus(oldMuteButton, "data-is-muted")},`
-        }else{
-            status += `chromeMute:${muteStatus(newMuteButton, "data-is-muted")},`
-        }
-
-        if(videoButton){
-            videoButton = videoButton.getAttribute("data-is-muted") == "true" ? "stopped" : "started";
-            status +=`chromeVideo:${videoButton},`;
-        }else{
-            status +=`chromeVideo:disabled,`;
-        }
+        const audioButtonSelectors = this.muteSelectors.concat(this.unmuteSelectors);
+        audioButtonSelectors.forEach(selector => {
+            let button = getElement(selector);
+            if (muteStatus(button, "data-is-muted") != 'disabled'){
+                status += `chromeMute:${muteStatus(button, "data-is-muted")},`;
+                return;
+            }
+        });
+        
+        const videoButtonSelectors = this.videoActivateSelectors.concat(this.videoDeactivateSelectors);
+        videoButtonSelectors.forEach(selector => {
+            let button = getElement(selector);
+            if (videoStatus(button, "data-is-muted") != 'disabled'){
+                status +=`chromeVideo:${videoStatus(button, "data-is-muted")},`;
+                return;
+            }
+        });
 
         return status
     }
 
     toggleMute() {
-        let oldMuteButton = getElement("[data-is-muted] div");
-        let newMuteButton = getElement("[data-is-muted] button");
+        let toggleAction = ''
+        const audioButtonSelectors = this.muteSelectors.concat(this.unmuteSelectors);
+        audioButtonSelectors.forEach(selector => {
+            let button = getElement(selector);
+            if (muteStatus(button, "data-is-muted") != 'disabled'){
+                button.click();
+                toggleAction = "done";
+                return;
+            }
+        });
 
-        if(!oldMuteButton && !newMuteButton){
-            return "chromeMute:disabled"
-        }
-        
-        if(muteStatus(oldMuteButton, "data-is-muted") != 'disabled'){
-            oldMuteButton.click();
-        }else{
-            newMuteButton.click();
+        if (toggleAction != "done") {
+            return "chromeMute:disabled";
         }
     }
 
     toggleVideo() {
-        let videoButton = (
-            getElement('[aria-label="Turn off camera (ctrl + e)"]') || 
-            getElement('[aria-label="Turn on camera (ctrl + e)"]')
-        );
-    
-        if(videoButton){
-            videoButton.click();
-            return "done";
-        }else{
-            console.error("Could not find google meet's video button");
-            return "chromeVideo:disabled,"
+        let toggleAction = ''
+        const videoButtonSelectors = this.videoActivateSelectors.concat(this.videoDeactivateSelectors);
+        videoButtonSelectors.forEach(selector => {
+            let button = getElement(selector);
+            if (videoStatus(button, "data-is-muted") != 'disabled'){
+                button.click();
+                toggleAction = "done";
+                return;
+            }
+        });
+
+        if (toggleAction != "done") {
+            return "chromeVideo:disabled";
         }
     }
 }
