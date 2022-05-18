@@ -19,7 +19,7 @@ yarn start
 Then load the project directory in your web browser as an unpacked extension.
 
 ## Build Zipped Extension
-* set `NODE_ENV` variable in `.env` file
+* set `NODE_ENV` variable in `.env` file to `"production"`
 ```
 yarn build
 ```
