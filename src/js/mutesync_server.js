@@ -6,7 +6,7 @@ export function initMutesyncServerConnection(meetingClientsMap) {
   let socket = io("http://localhost:8249", {
     query: {
       host: window.location.host,
-      version: "5.0.2",
+      version: "5.0.3",
     },
     reconnection: true,
     reconnectionDelayMax: 5000,
