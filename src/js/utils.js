@@ -29,24 +29,3 @@ export function muteStatus(muteButton, attribute, revertAttribute=false){
             return "disabled";
     }
 }
-
-export function videoStatus(videoButton, attribute, revertAttribute=false){
-    
-    if(videoButton){
-        attribute = videoButton.getAttribute(attribute)
-    }else{
-        attribute = undefined
-    }
-
-    if(revertAttribute && attribute)
-        attribute = attribute == "true" ? "false" : "true";
-
-    switch(attribute){
-        case 'true':
-            return "stopped";
-        case 'false':
-            return "started";
-        default:
-            return "disabled";
-    }
-}
