@@ -14,19 +14,19 @@ export class GoogleMeet extends Clients {
             getElement('[aria-label="Turn off camera (ctrl + e)"]') || 
             getElement('[aria-label="Turn on camera (ctrl + e)"]')
         );
-        let status = ''
+        let status = {};
 
         if(muteStatus(oldMuteButton, "data-is-muted") != 'disabled'){
-            status += `chromeMute:${muteStatus(oldMuteButton, "data-is-muted")},`
+            status.muteStatus = muteStatus(oldMuteButton, "data-is-muted");
         }else{
-            status += `chromeMute:${muteStatus(newMuteButton, "data-is-muted")},`
+            status.muteStatus = muteStatus(newMuteButton, "data-is-muted");
         }
 
         if(videoButton){
             videoButton = videoButton.getAttribute("data-is-muted") == "true" ? "stopped" : "started";
-            status +=`chromeVideo:${videoButton},`;
+            status.videoStatus = videoButton;
         }else{
-            status +=`chromeVideo:disabled,`;
+            status.videoStatus = "disabled";
         }
 
         return status

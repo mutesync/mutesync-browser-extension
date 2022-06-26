@@ -3,7 +3,10 @@ import { io } from "./socket_io.js";
 let currentMeetingClient = null;
 
 export function initMutesyncServerConnection(meetingClientsMap) {
-  let socket = io("http://localhost:8249", {
+  currentMeetingClient = meetingClientsMap[window.location.host];
+  console.error(currentMeetingClient.getStatus())
+
+  /*let socket = io("http://localhost:8249", {
     query: {
       host: window.location.host,
       version: "5.0.3",
@@ -53,5 +56,5 @@ export function initMutesyncServerConnection(meetingClientsMap) {
     console.error("Socket error: ", error);
   });
 
-  return socket;
+  return socket;*/
 }

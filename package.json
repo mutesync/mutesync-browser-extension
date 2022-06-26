@@ -1,6 +1,6 @@
 {
   "name": "mutesync-browser-extension",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "",
   "scripts": {
     "build": "node scripts/build.js",
@@ -20,5 +20,8 @@
     "write-file-webpack-plugin": "4.5.1",
     "zip-webpack-plugin": "^4.0.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "xstate": "^4.32.1"
+  }
 }
